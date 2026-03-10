@@ -7,16 +7,58 @@
 </head>
 <body>
     <div id="app">
-        <h1>{{message}}</h1>
+        <h1>这个人名字叫{{name}},年龄是{{age}}</h1>
     </div>
     <script src="vue.js"></script>
     <script>
-        new Vue({
-            el:'#app',
-            data:{
-                message:'hello vue！！！'
+        var data = {
+            name:"张三",
+            age:18
+        }
+        // new Vue({
+        //     el:"#app",
+        //     data:data
+        // })
+        var app = new Vue({
+            el:"#app",
+            // data:{
+            //     name:"张三",
+            //     age:18
+            // }
+            data:data,
+            created(){
+                console.log("created:"+this.name)
+
+            },
+            beforeCreate(){
+                console.log("beforeCreate")
+            } ,
+            updated(){
+                console.log("updated")
+            },
+            destroyed(){
+                console.log("destroyed")
             }
         })
+
+       
+
+        console.log(app.name==data.name)
+        console.log(app.age==data.age)
+
+        app.$watch('name',function(newVal,oldVal){
+            console.log(newVal,oldVal);
+        })
+        app.$watch('age',function(newVal,oldVal){
+            console.log(newVal,oldVal)
+        })
+
+        app.$data.name = "赵六"
+        app.$data.age = 23
+        // app.$destroy()
+        console.log(app)
+
+
     </script>
 </body>
 </html>
