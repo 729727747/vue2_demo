@@ -9,12 +9,42 @@
     <div id="app">
         <h1>这个人名字叫{{name}},年龄是{{age}}</h1>
         <h2 v-bind:title="name">{{name}}</h2>
+        <p>Using mustaches: {{ rawHtml }}</p>
+        <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+        <button v-bind:disabled="isButtonDisabled">Button</button>
+        <div > {{number + 1}}</div>
+        <div > {{ ok ? 'YES' : 'NO' }}</div>
+        <div  v-if="ok"> 是</div>
+        <div  @click="click1">
+            <div @click.stop="click2">
+                点击我
+            </div>
+        </div>
+        <div v-on:click="click3">
+            点击我click3
+        </div>
+        <a v-bind:href="url">跳转到百度</a>
+        <div v-on:[attributename]="click4"> ... </div>
+
+        //计算属性
+        <div>计算属性1：{{computedName}}</div>
+        <div>计算属性2：{{numberCount}}</div>
+
+
+
     </div>
     <script src="vue.js"></script>
     <script>
         var data = {
             name:"张三",
-            age:18
+            age:18,
+            rawHtml:"<b>这是一个粗体</b>",
+            isButtonDisabled:false,
+            number:100,
+            ok:true,
+            url:"https://www.baidu.com",
+            attributename:"click"
+
         }
         // new Vue({
         //     el:"#app",
@@ -26,38 +56,57 @@
             //     name:"张三",
             //     age:18
             // }
-            data:data,
-            created(){
-                console.log("created:"+this.name)
+            data:data
+            // ,created(){
+            //     console.log("created:"+this.name)
 
+            // },
+            // beforeCreate(){
+            //     console.log("beforeCreate")
+            // } ,
+            // updated(){
+            //     console.log("updated")
+            // },
+            // destroyed(){
+            //     console.log("destroyed")
+            // }
+            ,methods:{
+                click1(){
+                    console.log("click1")
+                },
+                click2(){
+                    console.log("click2")
+                },
+                click3(){
+                    console.log("click3")
+                },
+                click4(){
+                    console.log("click4")
+                }
             },
-            beforeCreate(){
-                console.log("beforeCreate")
-            } ,
-            updated(){
-                console.log("updated")
+            $watch:{
+                name(newVal,oldVal){
+                    console.log("name变化了，从" + oldVal + "变成了" + newVal)
+                },
+                age(newVal,oldVal){
+                    console.log("age变化了，从" + oldVal + "变成了" + newVal)
+                }
             },
-            destroyed(){
-                console.log("destroyed")
+            computed:{
+                computedName(){
+                    return this.name + "的年龄是" + this.age
+                }
+            },
+            computed:{
+                computedName(){
+                    return this.name + "的年龄是" + this.age
+                },
+                numberCount(){
+                    return this.number * 2
+                }
             }
+            
         })
-
-       
-
-        console.log(app.name==data.name)
-        console.log(app.age==data.age)
-
-        app.$watch('name',function(newVal,oldVal){
-            console.log(newVal,oldVal);
-        })
-        app.$watch('age',function(newVal,oldVal){
-            console.log(newVal,oldVal)
-        })
-
-        app.$data.name = "赵六"
-        app.$data.age = 23
-        // app.$destroy()
-        console.log(app)
 
 
     </script>
