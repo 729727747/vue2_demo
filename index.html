@@ -40,6 +40,15 @@
             <input v-model="question">
         </p>
         <p>{{ answer }}</p>
+        <!-- 类绑定 -->
+        <div
+        v-bind:class="classObject"
+        >test2</div>
+
+        <!--单向数据绑定-->
+        <div>
+            单向数据绑定 <input :value="inputName" placeholder="全名" type="text">
+        </div>
 
 
     </div>
@@ -61,7 +70,13 @@
             firstName:"张",
             lastName:"三",
             question: '',
-            answer: 'I cannot give you an answer until you ask a question!'
+            answer: 'I cannot give you an answer until you ask a question!',
+            // classObject:{
+            //     active:false,
+            //     'text-danger':false
+            // }
+            inputName :"杨"
+
 
         }
         // new Vue({
@@ -153,9 +168,14 @@
                             this.lastName = newVal.slice(1)
                         }
                     }
+                },
+                classObject(){
+                    return{
+                        active:false,
+                        'text-danger':false
+                    }
                 }
             }
-            
         })
 
 
