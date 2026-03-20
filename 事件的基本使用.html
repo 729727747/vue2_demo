@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <button @click="showAlert(msg)">点我弹窗</button><br>
+        <a href="https://www.baidu.com" @click.prevent="showAlert(msg)">点我跳转</a>
+
+        <div>今天天气是:{{weather}}</div><br>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+      
+        var vm =new Vue({
+            el:'#app',
+            data:{
+                msg:'hello vue',
+            },
+            methods:{
+                showAlert(msg){
+                    alert(msg)
+                }
+            }
+        })
+    </script>
+
+    </script>
+</body>
+</html>
