@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+
+        <ul>
+           <li v-for="(item,index) in persons">索引:{{index}},数据id:{{item.id}},名字:{{item.name}}，年龄:{{item.age}}</li>
+        </ul>
+
+    </div>
+    <script src="vue.js"></script>
+    <script>
+      
+        var vm =new Vue({
+            el:'#app',
+            data:{
+                persons:[
+                    {"id":1,"name":"张三","age":18},
+                    {"id":2,"name":"李四","age":20},
+                    {"id":3,"name":"王五","age":22}
+                ]
+            }
+        })
+    </script>
+
+    </script>
+</body>
+</html>

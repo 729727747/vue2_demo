@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+
+        <div v-show="isShow">这是一个div</div>
+
+
+        <div v-if="1===1">这是一个div2</div>
+
+        <button @click="num++">点我数值累加:{{num}}</button>
+        <div v-if="num <=1">张三</div>
+        <div v-else-if="num >=2 && num <=3">李四</div>
+        <div v-else-if="num >3">王五</div>
+
+    </div>
+    <script src="vue.js"></script>
+    <script>
+      
+        var vm =new Vue({
+            el:'#app',
+            data:{
+                isShow:true,
+                num:0
+            }
+        })
+    </script>
+
+    </script>
+</body>
+</html>
