@@ -9,7 +9,9 @@
     <div id="app">
 
         <ul>
-           <li v-for="(item,index) in persons">索引:{{index}},数据id:{{item.id}},名字:{{item.name}}，年龄:{{item.age}}</li>
+           <li v-for="(item,index) in persons" :key="item.id">
+            索引:{{index}},数据id:{{item.id}},名字:{{item.name}}，年龄:{{item.age}}
+           </li>
         </ul>
 
     </div>
