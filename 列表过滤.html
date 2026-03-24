@@ -9,6 +9,11 @@
     <div id="app">
 
         <input type="text" v-model="searchName" placeholder="请输入姓名">
+        <button @click="sortByAge">年龄升序</button>
+        <button @click="sortByAgeDesc">年龄降序</button>
+        <button @click="sortByOriginal">原顺序</button>
+
+
 
         <ul>
            <li v-for="(item,index) in filterPerson" :key="item.id">
