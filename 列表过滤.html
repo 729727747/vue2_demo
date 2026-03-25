@@ -11,6 +11,9 @@
         <input type="text" v-model="searchName" placeholder="请输入姓名">
         <button @click="order =1">升年龄升序</button>
         <button @click="order =2">年龄降序</button>
+        <div>
+            地址:{{temp.address}}
+        </div>
 
 
         <ul>
@@ -26,6 +29,9 @@
         var vm =new Vue({
             el:'#app',
             data:{
+                temp:{
+                    // address:'中国'
+                },
                 searchName:'',
                 order:0,//默认不排序 1升序 2降序
                 persons:[
