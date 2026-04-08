@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        原始时间:{{date}}<br>
+        计算属性格式化:{{formartDate}}<br>
+        过滤器格式化:{{date|formatDate('YYYYMMDD HH:mm:ss')}}<br>
+        全局过滤器:{{date|formatDate('YYYYMMDD HH:mm:ss')}}
+
+    </div>
+    <div id="app2">
+        <!-- 原始时间:{{date}}<br>
+        计算属性格式化:{{formartDate}}<br> -->
+        过滤器格式化:{{date|formartDate1('YYYYMMDD HH:mm:ss')}}<br>
+        全局过滤器:{{date|formartDate1('YYYY-MM-DD HH:mm:ss')}}
+    </div>
+    <script src="vue.js"></script>
+    <script src="day.js"></script>
+    
+    <script>
+        <!-- 全局过滤器使用时需要保证有多个实例使用 -->
+        Vue.filter('formartDate1',function(value,formartStr){
+            return dayjs(value).format(formartStr)
+        })
+
+        new Vue({
+            el: '#app',
+            data: {
+                date: new Date()
+            },
+            computed:{
+                formartDate(){
+                    return dayjs(this.date).format('YYYY-MM-DD HH:mm:ss')
+                }
+            },
+            filters:{
+                formatDate(value,formartStr){
+                    return dayjs(value).format(formartStr)
+                }
+            }
+        })
+        
+        new Vue({
+            el: '#app2',
+            // data: {
+            //     date: new Date()
+            // }
+        })
+    </script>
+</body>
+</html>
