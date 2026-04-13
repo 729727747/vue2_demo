@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+        <h1>武汉大学</h1>
+        <hr>
+        <teacher></teacher>
+        <hr>
+        <student></student>
+    </div>
+
+    <div id="app2">
+        <h1>武汉大学2</h1>
+        <hr>
+        <teacher></teacher>
+        <hr>
+        <student></student>
+    </div>
+   
+    <script src="vue.js"></script>
+    
+    <script>
+
+       //创建组件
+       const a = Vue.extend({
+        name:'teacher',
+        template: `
+        <div>
+            <h2>学校老师</h2>
+            <div>
+                <p>老师姓名:{{teacherName}}</p>
+                <p>老师年龄:{{teacherAge}}</p>
+            </div>
+        </div>
+        `,
+        data(){
+            return {
+                teacherName: '老师张三',
+                teacherAge: 30
+            }
+        }
+       })
+
+       const b = Vue.extend({
+        name:'student',
+        template: `
+        <div>
+            <h2>学校学生</h2>
+            <div>
+                <p>学生姓名:{{studentName}}</p>
+                <p>学生年龄:{{studentAge}}</p>
+            </div>
+        </div>
+        `,
+        data(){
+            return {
+                studentName: '学生小米',
+                studentAge: 10
+            }
+        }
+       })
+
+
+        //创建全局组件
+    //     Vue.component('teacher',{
+    //     template: `
+    //     <div>
+    //         <h2>学校老师</h2>
+    //         <div>
+    //             <p>老师姓名:{{teacherName}}</p>
+    //             <p>老师年龄:{{teacherAge}}</p>
+    //         </div>
+    //     </div>
+    //     `,
+    //     data(){
+    //         return {
+    //             teacherName: '老师张三',
+    //             teacherAge: 30
+    //         }
+    //     }
+    //    })
+    //     Vue.component('student',{
+    //     template: `
+    //     <div>
+    //         <h2>学校学生</h2>
+    //         <div>
+    //             <p>学生姓名:{{studentName}}</p>
+    //             <p>学生年龄:{{studentAge}}</p>
+    //         </div>
+    //     </div>
+    //     `,
+    //     data(){
+    //         return {
+    //             studentName: '学生小米',
+    //             studentAge: 10
+    //         }
+    //     }
+    //    })
+
+       new Vue({
+            el: '#app',
+            data: {
+               
+            },
+            components:{
+                teacher:a,
+                student:b
+            }
+        })
+
+         new Vue({
+            el: '#app2',
+            data: {
+               
+            },
+            components:{
+                teacher:a,
+                student:b
+            }
+        })
+
+
+        
+
+    </script>
+</body>
+</html>
