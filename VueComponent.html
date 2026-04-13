@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+        <h1>武汉大学</h1>
+        <hr>
+        <teacher :school-address="schoolAddress"></teacher>
+    </div>
+   
+    <script src="vue.js"></script>
+    
+    <script>
+
+       //创建组件
+       const a = Vue.extend({
+        name:'teacher',
+        props:['schoolAddress'],
+        template: `
+        <div>
+            <h2>学校老师</h2>
+            <div>
+                <p>老师姓名:{{teacherName}}</p>
+                <p>老师年龄:{{teacherAge}}</p>
+                <button @click="accessData">点击访问vm对象上的属性</button>
+            </div>
+        </div>
+        `,
+        data(){
+            return {
+                teacherName: '老师张三',
+                teacherAge: 30
+            }
+        },
+        methods:{
+            accessData(){
+                console.log(this.schoolAddress);
+            }
+        }
+       })
+
+       new Vue({
+            el: '#app',
+            data: {
+                schoolAddress:'武汉市'
+            },
+            components:{
+                teacher:a
+            }
+        })
+        
+
+    </script>
+</body>
+</html>
